@@ -1,14 +1,12 @@
 import React, { Fragment } from 'react';
-import Typography from '@material-ui/core/Typography';
 import GlobalStyle from './styles/GlobalStyles';
+import SpeechSynthesis from './SpeechSynthesis';
 
 const App = () => {
   return (
     <Fragment>
       <GlobalStyle />
-      <Typography variant="h1" component="h1">
-        Hackathon
-      </Typography>
+      <SpeechSynthesis />
     </Fragment>
   );
 };

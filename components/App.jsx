@@ -1,13 +1,14 @@
 import React, { Fragment } from 'react';
 import GlobalStyle from './styles/GlobalStyles';
-import MessageArea from './MessageArea';
 import AccordionList from './AccordionList';
 
 const App = () => {
   return (
     <Fragment>
       <GlobalStyle />
-      <AccordionList />
+      <AccordionList category="Nouns" />
+      <AccordionList category="Verbs" />
+      <AccordionList category="Adjectives" />
     </Fragment>
   );
 };

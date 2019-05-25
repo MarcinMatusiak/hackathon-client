@@ -5,7 +5,7 @@ import { func, object } from 'prop-types';
 import Item from '../MessageItem';
 import { MessageAreaContainer, Area, Buttons, IconStyled } from './MessageAreaStyles';
 import withSpeech from '../../HOC/withSpeech.jsx';
-import { removeWord } from '../../store/actions';
+import { removeWord, removeAllWords } from '../../store/actions';
 
 class MessageArea extends Component {
   state = {
@@ -35,7 +35,10 @@ class MessageArea extends Component {
     this.props.read(message);
   };
 
-  deleteAll = () => this.setState({ words: [] });
+  deleteAll = () => {
+    this.setState({ words: [] });
+    this.props.removeAllWords();
+  };
 
   renderWords = words => {
     return words.map(word => (
@@ -66,5 +69,5 @@ export default connect(
   state => ({
     chosenWords: state.getWordReducer,
   }),
-  { removeWord },
+  { removeWord, removeAllWords },
 )(withSpeech(MessageArea));

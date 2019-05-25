@@ -1,5 +1,5 @@
 import server from '../../apis/server';
-import { FETCH_WORDS, GET_WORD, REMOVE_WORD } from '../types';
+import { FETCH_WORDS, GET_WORD, REMOVE_WORD, REMOVE_ALL_WORDS } from '../types';
 
 export const fetchWords = () => async dispatch => {
   console.log('działam');
@@ -22,4 +22,8 @@ export const getWord = word => ({
 export const removeWord = id => ({
   type: REMOVE_WORD,
   payload: id,
+});
+
+export const removeAllWords = () => ({
+  type: REMOVE_ALL_WORDS,
 });

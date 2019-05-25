@@ -1,4 +1,4 @@
-import { GET_WORD, REMOVE_WORD } from '../types';
+import { GET_WORD, REMOVE_WORD, REMOVE_ALL_WORDS } from '../types';
 
 const getWordReducer = (state = [], action) => {
   if (action.type === GET_WORD) {
@@ -6,6 +6,9 @@ const getWordReducer = (state = [], action) => {
   }
   if (action.type === REMOVE_WORD) {
     return state.filter(word => word._id !== action.payload);
+  }
+  if (action.type === REMOVE_ALL_WORDS) {
+    return [];
   }
   return state;
 };

@@ -54,6 +54,7 @@ class MessageArea extends Component {
     const message = newArr.join(' ');
     const newMessage = message.charAt(0).toUpperCase() + message.slice(1) + '.';
     console.log(newMessage);
+    window.alert(newMessage);
     this.deleteAll();
   };
 

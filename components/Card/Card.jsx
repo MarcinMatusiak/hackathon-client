@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -9,6 +10,7 @@ import Icon from '@material-ui/core/Icon';
 import { PropTypes } from 'prop-types';
 import { Center, HOV } from './CardStyles';
 import withSpeech from '../../HOC/withSpeech.jsx';
+import { getWord } from '../../store/actions';
 
 const useStyles = makeStyles({
   card: {
@@ -36,9 +38,15 @@ const ImgMediaCard = props => {
   };
 
   return (
-    <Card className={classes.card} onClick={() => console.log(props.text)}>
+    <Card className={classes.card} onClick={() => props.getWord(props.word)}>
       <CardActionArea>
-        <CardMedia component="img" alt={props.text} height="90px" image={props.link} title={props.text} />
+        <CardMedia
+          component="img"
+          alt={props.word.name}
+          height="90px"
+          image={props.word.image}
+          title={props.word.name}
+        />
         <HOV>
           <Icon className={classes.icon} onClick={() => readWord(props.text)}>
             volume_up
@@ -46,7 +54,7 @@ const ImgMediaCard = props => {
         </HOV>
         <Center>
           <CardContent className={classes.pad}>
-            <Typography component="h2">{props.text}</Typography>
+            <Typography component="h2">{props.word.name}</Typography>
           </CardContent>
         </Center>
       </CardActionArea>
@@ -55,8 +63,14 @@ const ImgMediaCard = props => {
 };
 
 ImgMediaCard.propTypes = {
-  link: PropTypes.string,
-  text: PropTypes.string,
+  word: PropTypes.shape({
+    _id: PropTypes.string,
+    image: PropTypes.string,
+    name: PropTypes.string,
+  }),
 };
 
-export default withSpeech(ImgMediaCard);
+export default connect(
+  null,
+  { getWord },
+)(withSpeech(ImgMediaCard));

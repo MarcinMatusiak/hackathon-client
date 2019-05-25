@@ -1,18 +1,14 @@
 /* eslint-disable react/no-access-state-in-setstate */
 import React, { Component } from 'react';
-import { func } from 'prop-types';
+import { connect } from 'react-redux';
+import { func, object } from 'prop-types';
 import Item from '../MessageItem';
 import { MessageAreaContainer, Area, Buttons, IconStyled } from './MessageAreaStyles';
 import withSpeech from '../../HOC/withSpeech.jsx';
 
 class MessageArea extends Component {
   state = {
-    words: [
-      { _id: 'asdsad', name: 'I', img: 'https://image.flaticon.com/icons/svg/1694/1694970.svg' },
-      { _id: 'azxczc', name: 'love', img: 'https://image.flaticon.com/icons/svg/1694/1694970.svg' },
-      { _id: 'azsc', name: 'my', img: 'https://image.flaticon.com/icons/svg/1694/1694970.svg' },
-      { _id: 'azsdxczc', name: 'mom', img: 'https://image.flaticon.com/icons/svg/1694/1694970.svg' },
-    ],
+    words: this.props.chosenWords || [],
   };
 
   deleteWord = id => {
@@ -33,15 +29,17 @@ class MessageArea extends Component {
 
   deleteAll = () => this.setState({ words: [] });
 
+  renderWords = words => {
+    words.map(word => (
+      <Item key={word._id} label={word.name} imgSrc={word.img} deleteElement={() => this.deleteWord(word._id)} />
+    ));
+  };
+
   render() {
     console.log(this.props);
     return (
       <MessageAreaContainer>
-        <Area>
-          {this.state.words.map(word => (
-            <Item key={word._id} label={word.name} imgSrc={word.img} deleteElement={() => this.deleteWord(word._id)} />
-          ))}
-        </Area>
+        <Area>{this.props.chosenWords ? this.renderWords(this.props.chosenWords) : ''}</Area>
         <Buttons>
           <IconStyled className="fas fa-eraser" onClick={this.deleteAll} />
           <IconStyled className="fas fa-volume-up" onClick={() => this.readMessage(this.state.words)} />
@@ -53,6 +51,9 @@ class MessageArea extends Component {
 
 MessageArea.propTypes = {
   read: func,
+  chosenWords: object,
 };
 
-export default withSpeech(MessageArea);
+export default connect(state => ({
+  chosenWords: state.getWordReducer,
+}))(withSpeech(MessageArea));

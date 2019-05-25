@@ -11,9 +11,11 @@ import { MessageAreaContainer, Area, Buttons, IconStyled } from './MessageAreaSt
 import withSpeech from '../../HOC/withSpeech.jsx';
 import { removeWord, removeAllWords } from '../../store/actions';
 
-// const init = createMomentsSDK({ title: 'My App' }).then(momentsSDK => {
-//   momentsSDK.sendMessage({ text: 'Chosen date: 19.12.2009' });
-// });
+let momentsSDK = null;
+
+const init = createMomentsSDK({ title: 'My App' }).then(sdk => {
+  momentsSDK = sdk;
+});
 
 class MessageArea extends Component {
   state = {
@@ -55,7 +57,9 @@ class MessageArea extends Component {
     const newMessage = message.charAt(0).toUpperCase() + message.slice(1) + '.';
     console.log(newMessage);
     window.alert(newMessage);
+    momentsSDK.sendMessage({ text: newMessage });
     this.deleteAll();
+    momentsSDK.close();
   };
 
   renderWords = words => {

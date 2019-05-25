@@ -14,8 +14,6 @@ import verbSelector from '../../store/selectors/verbWords';
 import nounSelector from '../../store/selectors/nounWords';
 import adjectiveSelector from '../../store/selectors/adjectiveWords';
 
-
-
 class AccordionList extends React.PureComponent {
   componentDidMount() {
     this.props.fetchWords();
@@ -59,7 +57,6 @@ class AccordionList extends React.PureComponent {
   }
 
   render() {
-    console.log(this.props);
     return (
       <div>
         <MyExpansionPanel>

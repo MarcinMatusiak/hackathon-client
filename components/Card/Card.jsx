@@ -28,12 +28,12 @@ const useStyles = makeStyles({
     borderRadius: '45%',
   },
   icons: {
-      objectFit: 'fill',
-      margin: '0 auto',
-      width: '95%',
-      paddingTop: '10px',
-      margin: '0 auto',
-    },
+    objectFit: 'fill',
+    margin: '0 auto',
+    width: '95%',
+    paddingTop: '10px',
+    margin: '0 auto',
+  },
   pad: {
     padding: '16px 0',
   },

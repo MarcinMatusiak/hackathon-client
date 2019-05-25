@@ -1,13 +1,19 @@
+/* eslint-disable prefer-template */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/no-did-update-set-state */
 /* eslint-disable react/no-access-state-in-setstate */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { func, object } from 'prop-types';
+import { func, array } from 'prop-types';
+import createMomentsSDK from '@livechat/moments-sdk';
 import Item from '../MessageItem';
 import { MessageAreaContainer, Area, Buttons, IconStyled } from './MessageAreaStyles';
 import withSpeech from '../../HOC/withSpeech.jsx';
 import { removeWord, removeAllWords } from '../../store/actions';
+
+// const init = createMomentsSDK({ title: 'My App' }).then(momentsSDK => {
+//   momentsSDK.sendMessage({ text: 'Chosen date: 19.12.2009' });
+// });
 
 class MessageArea extends Component {
   state = {
@@ -42,20 +48,35 @@ class MessageArea extends Component {
     this.props.removeAllWords();
   };
 
+  sendMessage = arr => {
+    const newArr = [];
+    arr.forEach(word => newArr.push(word.name));
+    const message = newArr.join(' ');
+    const newMessage = message.charAt(0).toUpperCase() + message.slice(1) + '.';
+    console.log(newMessage);
+    this.deleteAll();
+  };
+
   renderWords = words => {
-    return words.map(word => (
-      <Item key={word._id} label={word.name} imgSrc={word.image} deleteElement={() => this.deleteWord(word._id)} />
+    return words.map((word, index) => (
+      <Item
+        key={word._id}
+        label={word.name}
+        imgSrc={word.image}
+        index={index}
+        deleteElement={() => this.deleteWord(word._id)}
+      />
     ));
   };
 
   render() {
-    console.log(this.props);
     return (
       <MessageAreaContainer>
         <Area>{this.props.chosenWords ? this.renderWords(this.state.words) : ''}</Area>
         <Buttons>
           <IconStyled className="fas fa-eraser" onClick={this.deleteAll} />
           <IconStyled className="fas fa-volume-up" onClick={() => this.readMessage(this.state.words)} />
+          <IconStyled className="fas fa-paper-plane" onClick={() => this.sendMessage(this.state.words)} />
         </Buttons>
       </MessageAreaContainer>
     );
@@ -64,7 +85,7 @@ class MessageArea extends Component {
 
 MessageArea.propTypes = {
   read: func,
-  chosenWords: object,
+  chosenWords: array,
   removeWord: func,
   removeAllWords: func,
 };

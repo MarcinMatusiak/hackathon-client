@@ -13,7 +13,7 @@ export const MessageAreaContainer = styled.div`
 `;
 
 export const Area = styled.div`
-  width: 80%;
+  width: 75%;
   min-height: 100px;
   display: flex;
   flex-wrap: wrap;
@@ -23,7 +23,7 @@ export const Area = styled.div`
 `;
 
 export const Buttons = styled.div`
-  width: 20%;
+  width: 25%;
   height: 100%;
   display: flex;
   justify-content: center;

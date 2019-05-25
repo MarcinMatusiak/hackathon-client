@@ -36,8 +36,22 @@ const ImgMediaCard = props => {
     props.read(word);
   };
 
+  const changeColor = category => {
+    switch (category) {
+      case 'noun':
+        return { backgroundColor: '#CBD3F5' };
+      case 'verb':
+        return { backgroundColor: '#FED2C6' };
+      case 'adjective':
+        return { backgroundColor: '#CEFAD2' };
+      default:
+        return null;
+    }
+  };
+
   return (
     <Card
+      style={changeColor(props.word.category)}
       className={classes.card}
       onClick={e => {
         if (e.target.id === 'icon') {

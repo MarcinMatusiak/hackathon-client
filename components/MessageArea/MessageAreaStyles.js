@@ -14,7 +14,7 @@ export const MessageAreaContainer = styled.div`
 
 export const Area = styled.div`
   width: 80%;
-  height: 100px;
+  min-height: 100px;
   display: flex;
   flex-wrap: wrap;
   border: 1px solid #000;

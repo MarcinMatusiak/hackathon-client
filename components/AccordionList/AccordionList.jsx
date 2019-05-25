@@ -30,11 +30,25 @@ class AccordionList extends React.PureComponent {
     return <div>Loading....</div>;
   }
 
+  changeColor(category) {
+    switch (category) {
+      case 'Nouns':
+        return { backgroundColor: '#CBD3F5' };
+      case 'Verbs':
+        return { backgroundColor: '#FED2C6' };
+      case 'Adjectives':
+        return { backgroundColor: '#CEFAD2' };
+      default:
+        return null;
+    }
+  }
+
   render() {
+    console.log(this.props);
     return (
       <div>
         <ExpansionPanel>
-          <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+          <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} style={this.changeColor(this.props.category)}>
             <img
               src="http://files.softicons.com/download/system-icons/windows-8-metro-invert-icons-by-dakirby309/png/256x256/Other/Power%20-%20Shut%20Down.png"
               alt="category icon"

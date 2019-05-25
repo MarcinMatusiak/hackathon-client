@@ -1,21 +1,30 @@
 import styled from 'styled-components';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
-import GridList from '@material-ui/core/GridList';
-import { GridListTile } from '@material-ui/core';
 
 export const MyExpansionPanelDetails = styled(ExpansionPanelDetails)`
-  display: flex;
+  /*display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  overflow: hidden;
+  overflow: hidden; */
 `;
 
-export const MyGridList = styled(GridList)`
+export const MyGridList = styled.div`
   width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 10px;
   border: 1px solid blue;
 `;
 
-export const MyGridListTile = styled(GridListTile)`
+export const MyGridListTile = styled.div`
+  display: flex;
+  justify-content: center;
   border: 1px solid green;
-  background: red;
+`;
+
+export const ImageWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  border: 1px solid red;
+  background: violet;
 `;

@@ -19,7 +19,7 @@ class AccordionList extends React.PureComponent {
     if (words) {
       return words.map(word => (
         <MyGridListTile key={word._id}>
-          <Card text={word.name} link={word.image} />
+          <Card word={word} />
         </MyGridListTile>
       ));
     }

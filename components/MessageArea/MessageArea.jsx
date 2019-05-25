@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/no-did-update-set-state */
 /* eslint-disable react/no-access-state-in-setstate */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
@@ -63,6 +65,8 @@ class MessageArea extends Component {
 MessageArea.propTypes = {
   read: func,
   chosenWords: object,
+  removeWord: func,
+  removeAllWords: func,
 };
 
 export default connect(

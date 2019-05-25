@@ -24,10 +24,29 @@ export const Area = styled.div`
 
 export const Buttons = styled.div`
   width: 20%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 50px;
+  span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  @media (max-width: 675px) {
+    flex-direction: column;
+    span {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  @media (max-width: 400px) {
+    flex-direction: column;
+    font-size: 30px;
+  }
 `;
 
 export const IconStyled = styled(Icon)`
@@ -38,6 +57,14 @@ export const IconStyled = styled(Icon)`
   &:hover {
     cursor: pointer;
     transform: scale(1.1);
-    color: #494949;
+    color: #fff;
+  }
+
+  @media (max-width: 675px) {
+    font-size: 30px !important;
+  }
+
+  @media (max-width: 400px) {
+    font-size: 25px !important;
   }
 `;

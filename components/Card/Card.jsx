@@ -26,7 +26,7 @@ const useStyles = makeStyles({
     top: '5px',
     backgroundColor: 'rgba(255, 255, 255, .8)',
     borderRadius: '45%',
-      },
+  },
   pad: {
     padding: '16px 5px',
   },
@@ -90,7 +90,10 @@ ImgMediaCard.propTypes = {
     _id: PropTypes.string,
     image: PropTypes.string,
     name: PropTypes.string,
+    category: PropTypes.string,
   }),
+  read: PropTypes.func,
+  getWord: PropTypes.func,
 };
 
 export default connect(

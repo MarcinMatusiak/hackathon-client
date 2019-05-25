@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 
 export const MyGridList = styled.div`
   width: 100%;
@@ -20,4 +21,8 @@ export const MyImage = styled.img`
   width: 50px;
   height: 50px;
   margin: 10px;
+`;
+export const MyExpansionPanel = styled(ExpansionPanel)`
+  margin: 0;
+  box-shadow: 0 !important;
 `;

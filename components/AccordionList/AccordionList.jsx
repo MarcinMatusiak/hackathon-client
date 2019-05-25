@@ -8,7 +8,7 @@ import { ExpansionPanelDetails } from '@material-ui/core';
 import { func, string, array } from 'prop-types';
 import Card from '../Card';
 import MessageArea from '../MessageArea';
-import { MyHeader, MyGridList, MyGridListTile } from './AccordionList';
+import { MyImage, MyHeader, MyGridList, MyGridListTile } from './AccordionList';
 import { fetchWords } from '../../store/actions';
 import verbSelector from '../../store/selectors/verbWords';
 import nounSelector from '../../store/selectors/nounWords';
@@ -43,16 +43,26 @@ class AccordionList extends React.PureComponent {
     }
   }
 
+  changeIcon(category) {
+    switch (category) {
+      case 'Nouns':
+        return 'https://cdn.pixabay.com/photo/2014/11/25/21/04/package-545658_960_720.png';
+      case 'Verbs':
+        return 'https://cdn.pixabay.com/photo/2014/03/24/17/16/stick-man-295293_960_720.png';
+      case 'Adjectives':
+        return 'https://cdn.pixabay.com/photo/2016/04/24/05/52/heart-1348869_960_720.png';
+      default:
+        return null;
+    }
+  }
+
   render() {
     console.log(this.props);
     return (
       <div>
         <ExpansionPanel>
           <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} style={this.changeColor(this.props.category)}>
-            <img
-              src="http://files.softicons.com/download/system-icons/windows-8-metro-invert-icons-by-dakirby309/png/256x256/Other/Power%20-%20Shut%20Down.png"
-              alt="category icon"
-            />
+            <MyImage src={this.changeIcon(this.props.category)} alt="category icon" />
             <MyHeader>{this.props.category}</MyHeader>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>

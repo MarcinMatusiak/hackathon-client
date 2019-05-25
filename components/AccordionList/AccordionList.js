@@ -15,3 +15,9 @@ export const MyHeader = styled.h2`
   font-weight: bold;
   font-size: 2em;
 `;
+
+export const MyImage = styled.img`
+  width: 50px;
+  height: 50px;
+  margin: 10px;
+`;

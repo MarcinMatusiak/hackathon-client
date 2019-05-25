@@ -29,6 +29,7 @@ export const Img = styled.div`
     align-items: center;
     justify-content: center;
     color: rgba(150, 40, 27, 0.8);
+    border-radius: 5px;
     span {
       font-size: 30px;
     }

@@ -3,12 +3,13 @@ import Icon from '@material-ui/core/Icon';
 
 export const MessageAreaContainer = styled.div`
   padding: 10px;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  background: rgba(0, 0, 0, 0.5);
 `;
 
 export const Area = styled.div`
@@ -18,6 +19,7 @@ export const Area = styled.div`
   flex-wrap: wrap;
   border: 1px solid #000;
   border-radius: 5px;
+  background: #fff;
 `;
 
 export const Buttons = styled.div`

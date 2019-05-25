@@ -37,7 +37,15 @@ const ImgMediaCard = props => {
   };
 
   return (
-    <Card className={classes.card} onClick={() => props.getWord(props.word)}>
+    <Card
+      className={classes.card}
+      onClick={e => {
+        if (e.target.id === 'icon') {
+          return;
+        }
+        props.getWord(props.word);
+      }}
+    >
       <CardActionArea>
         <CardMedia
           component="img"
@@ -47,7 +55,7 @@ const ImgMediaCard = props => {
           title={props.word.name}
         />
         <HOV>
-          <Icon className={classes.icon} onClick={() => readWord(props.word.name)}>
+          <Icon id="icon" className={classes.icon} onClick={() => readWord(props.word.name)}>
             volume_up
           </Icon>
         </HOV>

@@ -23,8 +23,10 @@ const useStyles = makeStyles({
     fontSize: '26px',
     position: 'absolute',
     right: '5px',
-    bottom: '23px',
-  },
+    top: '5px',
+    backgroundColor: 'rgba(255, 255, 255, .8)',
+    borderRadius: '45%',
+      },
   pad: {
     padding: '16px 5px',
   },

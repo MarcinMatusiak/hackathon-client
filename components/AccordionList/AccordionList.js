@@ -10,10 +10,11 @@ export const MyExpansionPanelDetails = styled(ExpansionPanelDetails)`
 
 export const MyGridList = styled.div`
   width: 100%;
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  grid-gap: 10px;
   border: 1px solid blue;
+  padding: 10px;
 `;
 
 export const MyGridListTile = styled.div`

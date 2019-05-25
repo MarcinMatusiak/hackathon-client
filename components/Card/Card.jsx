@@ -32,7 +32,7 @@ const useStyles = makeStyles({
 
 const ImgMediaCard = props => {
   const classes = useStyles();
-  console.log(props)
+  console.log(props);
   const readWord = word => {
     props.read(word);
   };
@@ -48,7 +48,7 @@ const ImgMediaCard = props => {
           title={props.word.name}
         />
         <HOV>
-          <Icon className={classes.icon} onClick={() => readWord(props.text)}>
+          <Icon className={classes.icon} onClick={() => readWord(props.word.name)}>
             volume_up
           </Icon>
         </HOV>

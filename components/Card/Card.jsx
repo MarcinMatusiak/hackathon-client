@@ -8,6 +8,7 @@ import Typography from '@material-ui/core/Typography';
 import Icon from '@material-ui/core/Icon';
 import { PropTypes } from 'prop-types';
 import { Center, HOV } from './CardStyles';
+import withSpeech from '../../HOC/withSpeech.jsx';
 
 const useStyles = makeStyles({
   card: {
@@ -29,13 +30,17 @@ const useStyles = makeStyles({
 
 const ImgMediaCard = props => {
   const classes = useStyles();
+  console.log(props)
+  const readWord = word => {
+    props.read(word);
+  };
 
   return (
     <Card className={classes.card} onClick={() => console.log(props.text)}>
       <CardActionArea>
         <CardMedia component="img" alt={props.text} height="90px" image={props.link} title={props.text} />
         <HOV>
-          <Icon className={classes.icon} onClick={() => console.log('muzyczka')}>
+          <Icon className={classes.icon} onClick={() => readWord(props.text)}>
             volume_up
           </Icon>
         </HOV>
@@ -54,4 +59,4 @@ ImgMediaCard.propTypes = {
   text: PropTypes.string,
 };
 
-export default ImgMediaCard;
+export default withSpeech(ImgMediaCard);

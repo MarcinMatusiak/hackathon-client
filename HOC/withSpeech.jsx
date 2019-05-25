@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
 const withSpeech = WrappedComponent => {
-  return class SpeechSynthesis extends Component {
-    readMessage = text => {
+  return (props) => {
+    const readMessage = text => {
       const msg = new SpeechSynthesisUtterance();
       msg.text = text;
       const voices = speechSynthesis.getVoices();
@@ -10,10 +10,8 @@ const withSpeech = WrappedComponent => {
       msg.lang = 'en-US';
       speechSynthesis.speak(msg);
     };
-
-    render() {
-      return <WrappedComponent read={this.readMessage} />;
-    }
+      return <WrappedComponent read={readMessage} {...props} />;
+    
   };
 };
 

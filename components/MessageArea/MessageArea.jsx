@@ -5,15 +5,23 @@ import { func, object } from 'prop-types';
 import Item from '../MessageItem';
 import { MessageAreaContainer, Area, Buttons, IconStyled } from './MessageAreaStyles';
 import withSpeech from '../../HOC/withSpeech.jsx';
+import { removeWord } from '../../store/actions';
 
 class MessageArea extends Component {
   state = {
     words: this.props.chosenWords || [],
   };
 
+  componentDidUpdate(previousProps, previousState) {
+    if (previousProps.chosenWords !== this.props.chosenWords) {
+      this.setState({ words: this.props.chosenWords });
+    }
+  }
+
   deleteWord = id => {
     const newWords = this.state.words.filter(word => word._id !== id);
     this.setState({ words: newWords });
+    this.props.removeWord(id);
   };
 
   readWord = text => {
@@ -30,8 +38,8 @@ class MessageArea extends Component {
   deleteAll = () => this.setState({ words: [] });
 
   renderWords = words => {
-    words.map(word => (
-      <Item key={word._id} label={word.name} imgSrc={word.img} deleteElement={() => this.deleteWord(word._id)} />
+    return words.map(word => (
+      <Item key={word._id} label={word.name} imgSrc={word.image} deleteElement={() => this.deleteWord(word._id)} />
     ));
   };
 
@@ -39,7 +47,7 @@ class MessageArea extends Component {
     console.log(this.props);
     return (
       <MessageAreaContainer>
-        <Area>{this.props.chosenWords ? this.renderWords(this.props.chosenWords) : ''}</Area>
+        <Area>{this.props.chosenWords ? this.renderWords(this.state.words) : ''}</Area>
         <Buttons>
           <IconStyled className="fas fa-eraser" onClick={this.deleteAll} />
           <IconStyled className="fas fa-volume-up" onClick={() => this.readMessage(this.state.words)} />
@@ -54,6 +62,9 @@ MessageArea.propTypes = {
   chosenWords: object,
 };
 
-export default connect(state => ({
-  chosenWords: state.getWordReducer,
-}))(withSpeech(MessageArea));
+export default connect(
+  state => ({
+    chosenWords: state.getWordReducer,
+  }),
+  { removeWord },
+)(withSpeech(MessageArea));

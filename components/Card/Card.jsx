@@ -32,7 +32,6 @@ const useStyles = makeStyles({
 
 const ImgMediaCard = props => {
   const classes = useStyles();
-  console.log(props);
   const readWord = word => {
     props.read(word);
   };

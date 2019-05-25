@@ -8,7 +8,7 @@ import { ExpansionPanelDetails } from '@material-ui/core';
 import { func, string, array } from 'prop-types';
 import Card from '../Card';
 import MessageArea from '../MessageArea';
-import { MyImage, MyHeader, MyGridList, MyGridListTile } from './AccordionList';
+import { MyImage, MyHeader, MyGridList, MyGridListTile, MyExpansionPanel } from './AccordionList';
 import { fetchWords } from '../../store/actions';
 import verbSelector from '../../store/selectors/verbWords';
 import nounSelector from '../../store/selectors/nounWords';
@@ -57,10 +57,9 @@ class AccordionList extends React.PureComponent {
   }
 
   render() {
-    console.log(this.props);
     return (
       <div>
-        <ExpansionPanel>
+        <MyExpansionPanel>
           <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} style={this.changeColor(this.props.category)}>
             <MyImage src={this.changeIcon(this.props.category)} alt="category icon" />
             <MyHeader>{this.props.category}</MyHeader>
@@ -79,7 +78,7 @@ class AccordionList extends React.PureComponent {
               }
             })()}
           </ExpansionPanelDetails>
-        </ExpansionPanel>
+        </MyExpansionPanel>
         <MessageArea />
       </div>
     );

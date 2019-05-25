@@ -9,6 +9,9 @@ const GlobalStyles = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css?family=Ubuntu&display=swap');
   font-family: 'Ubuntu', sans-serif;
 }
+${'' /* .section {
+  margin: 0;
+} */}
 `;
 
 export default GlobalStyles;

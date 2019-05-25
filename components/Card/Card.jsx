@@ -27,8 +27,15 @@ const useStyles = makeStyles({
     backgroundColor: 'rgba(255, 255, 255, .8)',
     borderRadius: '45%',
   },
+  icons: {
+    objectFit: 'fill',
+    margin: '0 auto',
+    width: '95%',
+    paddingTop: '10px',
+    margin: '0 auto',
+  },
   pad: {
-    padding: '16px 5px',
+    padding: '16px 0',
   },
 });
 
@@ -69,6 +76,7 @@ const ImgMediaCard = props => {
           height="90px"
           image={props.word.image}
           title={props.word.name}
+          className={classes.icons}
         />
         <HOV>
           <Icon id="icon" className={classes.icon} onClick={() => readWord(props.word.name)}>

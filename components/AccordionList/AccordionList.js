@@ -10,21 +10,12 @@ export const MyExpansionPanelDetails = styled(ExpansionPanelDetails)`
 
 export const MyGridList = styled.div`
   width: 100%;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 10px;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
   border: 1px solid blue;
 `;
 
 export const MyGridListTile = styled.div`
-  display: flex;
-  justify-content: center;
   border: 1px solid green;
-`;
-
-export const ImageWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  border: 1px solid red;
-  background: violet;
 `;

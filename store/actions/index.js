@@ -1,5 +1,5 @@
 import server from '../../apis/server';
-import { FETCH_WORDS } from '../types';
+import { FETCH_WORDS, GET_WORD } from '../types';
 
 export const fetchWords = () => async dispatch => {
   console.log('działam');
@@ -13,3 +13,8 @@ export const fetchWords = () => async dispatch => {
     console.log(e);
   }
 };
+
+export const getWord = word => ({
+  type: GET_WORD,
+  payload: word,
+});
